@@ -8,11 +8,12 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode moveL;
     public KeyCode moveR;
 
-    public int speedUp = 4;
+    public int speedUp = 2;
     public float vertVelocity = 0;
     public float horizVelocity = 0;
     public int laneNum = 2;
-    public bool Lock = false; // flase==0 true==1
+    private bool Lock = false; // flase==0 true==1
+    private bool isDead = false; //bool to detect if object is dead or not.
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead == true) //if the player is dead then don't do anything.
+            return;
         
         GetComponent<Rigidbody>().velocity = new Vector3(horizVelocity, vertVelocity, speedUp);
 
@@ -50,7 +53,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(x.gameObject.tag == "Kills")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            death();
         }
         if(x.gameObject.tag == "Powerups")
         {
@@ -65,5 +69,18 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         horizVelocity = 0;
         Lock = false;
+    }
+
+    //function that speeds up the game with each level passed in score
+    public void setSpeed(int x)
+    {
+        speedUp ++;
+    }
+
+    //function that stops everything when player die
+    void death()
+    {
+        isDead = true;
+        GetComponent<Score>().onDeath();
     }
 }
