@@ -118,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166033948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6666667, y: 2.1333337, z: 5.08}
+  m_LocalPosition: {x: 0.6666667, y: 2.1333337, z: 4.24}
   m_LocalScale: {x: 2.6666667, y: 2.6666667, z: 1.3333334}
   m_Children: []
   m_Father: {fileID: 1049689513775430120}
@@ -192,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 5804199805259562756, guid: c7ee2f5ce7eb8d3498d3245a40cfda8c,
         type: 3}
       propertyPath: m_Name
-      value: Tile_StayLthenR
+      value: Tile_StayLthenR Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2377146560333516719, guid: c7ee2f5ce7eb8d3498d3245a40cfda8c,
         type: 3}

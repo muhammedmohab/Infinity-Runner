@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float vertVelocity = 0;
     public float horizVelocity = 0;
     public int laneNum = 2;
+    public int coins = 0;
     private bool Lock = false; // flase==0 true==1
     private bool isDead = false; //bool to detect if object is dead or not.
     // Start is called before the first frame update
@@ -56,13 +57,19 @@ public class PlayerMovement : MonoBehaviour
             //Destroy(gameObject);
             death();
         }
-        if(x.gameObject.tag == "Powerups")
-        {
-            Destroy(x.gameObject);
-
-        }
+        //if (x.gameObject.tag == "Coins")
+        //{
+        //    Destroy(x.gameObject);
+        //    coins++;
+        //    GetComponent<Score>().addScore(5);
+        //}
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);
+        coins++;
+        GetComponent<Score>().addScore(5);
+    }
     IEnumerator stopMove()
     {
         //yield is wait

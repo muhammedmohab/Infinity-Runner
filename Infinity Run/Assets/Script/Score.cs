@@ -13,6 +13,7 @@ public class Score : MonoBehaviour
     private bool isDead = false;
 
     public Text scoreText;
+    public Text coinText;
     public deathMenu DeathMenu;
 
     void Start()
@@ -33,6 +34,7 @@ public class Score : MonoBehaviour
         score += Time.deltaTime * defLevel;
         //casing float to int
         scoreText.text = ((int)score).ToString();
+        coinText.text = (GetComponent<PlayerMovement>().coins).ToString();
     }
 
     void levelUp()
@@ -51,6 +53,14 @@ public class Score : MonoBehaviour
     public void onDeath()
     {
         isDead = true;
+        //Saving the highscore into the reg.
+        if(PlayerPrefs.GetFloat("Highscore") < score)
+            PlayerPrefs.SetFloat("Highscore",score);
+
         DeathMenu.startEndMenu(score);
+    }
+    public void addScore(int coins)
+    {
+        score += coins;
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Kills
   - Powerups
+  - Coins
   layers:
   - Default
   - TransparentFX
