@@ -13,12 +13,13 @@ public class Score : MonoBehaviour
     private bool isDead = false;
 
     public Text scoreText;
+    public Text highScoreText;
     public Text coinText;
     public deathMenu DeathMenu;
 
     void Start()
     {
-        
+        highScoreText.text = ((int) PlayerPrefs.GetFloat("Highscore")).ToString();
     }
 
     // Update is called once per frame
